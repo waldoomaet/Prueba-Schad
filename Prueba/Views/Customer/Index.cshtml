@@ -1,0 +1,60 @@
+﻿@model List<Customer>
+
+<h1>Transacciones</h1>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].CustName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Adress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].CustomerType)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>
+                    @customer.Id
+                </td>
+                <td>
+                    @customer.CustName
+                </td>
+                <td>
+                    @customer.Adress
+                </td>
+                <td>
+                    @customer.Status
+                </td>
+                <td>
+                    @customer.CustomerType.Description
+                </td>
+                <td>
+                    Ver facturas
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <p>No hay nada que mostrar :/</p>
+}
+
+<a class="nav-link" asp-area="" asp-controller="Customer" asp-action="Create">Crear cliente</a>
