@@ -1,1 +1,27 @@
-﻿<h1>Crear cliente</h1>
+﻿@model CustomerCreation
+
+<h1>Crear cliente</h1>
+<div class="row">
+    <div class="col-md-4">
+        @using (var form = Html.BeginForm("Create", "Customer", FormMethod.Post))
+        {
+            <div class="form-btn-group">
+                @Html.LabelFor(m => m.Customer.CustName, new { @class = "control-label"} )
+                @Html.TextBoxFor(m => m.Customer.CustName, new { @class = "form-control" } )
+            </div>
+
+            <div class="form-btn-group">
+                @Html.LabelFor(m => m.Customer.Adress, new { @class = "control-label"} )
+                @Html.TextBoxFor(m => m.Customer.Adress, new { @class = "form-control" } )
+            </div>
+
+            <div class="form-btn-group">
+                @Html.LabelFor(m => m.Customer.CustomerType, new { @class = "control-label"} )
+                @Html.DropDownListFor(m => m.Customer.CustomerTypeId, Model.CustomerTypes, "Seleccione uno", new { @class = "form-select" } )
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        }
+    </div>
+</div>
